@@ -50,7 +50,7 @@ app.post('/api/courses', (req, res) => {
   res.send(course);
 });
 
-app.put('/api/courses/:id', (req, res) => {});
+// app.put('/api/courses/:id', (req, res) => {});
 
 // PORT
 const port = process.env.PORT || 3000;
