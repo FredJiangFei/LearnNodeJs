@@ -1,0 +1,8 @@
+
+ "mongoose": "^5.4.19", // Major.Minor.Patch ^ ~
+npm view
+npm list --depth=0
+npm outdated
+npm update
+npm i -g npm-check-updates
+npm uninstall xxx
