@@ -6,12 +6,45 @@ mongoose
   .catch(err => console.log('Can not connect', err));
 
 const couserSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 20
+    // match: /pattern/
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ['web', 'mobile'],
+    lowercase: true
+    // uppercase
+    // trim
+  },
   author: String,
-  tags: [String],
+  tags: {
+    isAsync: true,
+    type: Array,
+    validate: {
+      validator: function(v, callback) {
+        setTimeout(() => {
+          const result = v && v.length > 0;
+          callback(result);
+        }, 4000);
+      },
+      message: 'Should have at least on tag'
+    }
+  },
   date: { type: Date, default: Date.now },
   isPublished: Boolean,
-  price: Number
+  price: {
+    type: Number,
+    required: function() {
+      this.isPublished;
+    }
+    // get
+    // set
+  }
 });
 
 const Course = mongoose.model('Course', couserSchema);
@@ -76,4 +109,4 @@ async function removeCourse(id) {
   console.log(result);
 }
 
-createCourse('5c8a121806da8b8f9c76a0ae');
+createCourse();
