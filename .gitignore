@@ -1,3 +1,1 @@
-/express-demo/node_modules/
-/node-package-manager/node_modules/
-/mongodb-demo/node_modules/
+**/node_modules/
