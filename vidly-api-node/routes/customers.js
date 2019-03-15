@@ -1,6 +1,8 @@
 const { Customer } = require('../models/customer');
 const express = require('express');
 const router = express.Router();
+const admin = require('../middlewares/admin');
+const auth = require('../middlewares/auth');
 
 router.get('/', async (req, res) => {
   const customers = await Customer.find();
@@ -15,7 +17,7 @@ router.post('/', async (req, res) => {
   res.send(customer);
 });
 
-router.delete(`/:id`, async (req, res) => {
+router.delete(`/:id`, [auth, admin], async (req, res) => {
   const customer = await Customer.findByIdAndRemove(req.params.id);
   res.send(customer);
 });
