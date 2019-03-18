@@ -7,7 +7,7 @@ const courses = require('./routes/courses');
 
 const app = express();
 
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs'); //pug handlebars ejs
 app.set('views', './views');
 
 app.use(express.json());
