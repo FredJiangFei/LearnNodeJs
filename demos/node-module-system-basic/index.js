@@ -1,1 +1,3 @@
-console.dir(global, { depth: 0 });
+require('./http');
+
+// console.dir(global, { depth: 0 });
