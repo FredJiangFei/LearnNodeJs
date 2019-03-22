@@ -10,12 +10,20 @@ process.stdin.on('readable', () => {
   }
 });
 
+process.on('SIGINT', function() {
+  process.stderr.write('Why are you trying to terminate me?!?  :-)');
+});
+
+console.log(
+  'Node is running as process #' +
+    process.pid +
+    ', 试着在键盘敲几个字然后按回车吧'
+);
+
 process.stdin.on('end', function() {
   process.stderr.write('End!\n');
 });
 
-process.on('SIGTERM', function() {
-  process.stderr.write('Why are you trying to terminate me?!?  :-)');
-});
-
-console.log('Node is running as process #' + process.pid);
+setTimeout(function() {
+  process.stdin.emit('end');
+}, 5000);
