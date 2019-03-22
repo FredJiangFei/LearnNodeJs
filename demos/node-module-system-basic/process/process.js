@@ -7,6 +7,7 @@ process.on('exit', function(code) {
 
   console.log('About to exit with code:', code);
 });
+
 process.on('beforeExit', function(code) {
   console.log('About to beforeExit with code:', code);
 });
