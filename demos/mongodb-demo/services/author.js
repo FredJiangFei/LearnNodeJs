@@ -19,5 +19,18 @@ async function speak(name, bio, website) {
   author.speak();
 }
 
+async function findByName(name) {
+  // Author.findByName(name, function(err, authors) {
+  //   console.log(authors);
+  // });
+
+  Author.find()
+    .byName(name)
+    .exec(function(err, authors) {
+      console.log(authors);
+    });
+}
+
 exports.createAuthor = createAuthor;
 exports.speak = speak;
+exports.findByName = findByName;
