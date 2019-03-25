@@ -54,14 +54,14 @@ const Course = mongoose.model('Course', couserSchema);
 // }
 
 // async function getCourses() {
-//   // eq
-//   // ne
-//   // gt
-//   // gte
-//   // lt
-//   // lte
+//   // eq (equal)
+//   // ne (not equal)
+//   // gt (greater than)
+//   // gte (greater than or equal to)
+//   // lt (less than)
+//   // lte (less than or equal to)
 //   // in
-//   // nin
+//   // nin (not in)
 
 //   const result = await Course.find({ author: 'Fred' })
 //     // .find({ author: /^Fred/i })
