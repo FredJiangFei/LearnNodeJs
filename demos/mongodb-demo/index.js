@@ -3,4 +3,4 @@ require('./connect');
 
 speak('Mosh', 'My bio', 'My Website');
 
-findByName('Mo');
+// findByName('Mo');

@@ -16,7 +16,9 @@ async function speak(name, bio, website) {
     bio,
     website
   });
-  author.speak();
+  // author.speak();
+
+  console.log(author.fullName);
 }
 
 async function findByName(name) {
