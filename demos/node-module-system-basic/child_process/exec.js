@@ -1,9 +1,12 @@
-const { exec } = require('child_process');
-exec('cat *.js missing_file | wc -l', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`执行出错: ${error}`);
-    return;
+var cp = require('child_process');
+
+cp.exec('dir', { encoding: 'utf-8' }, function(err, stdout, stderr) {
+  if (err) {
+    console.log(error.stack);
+    console.log('Error code: ' + error.code);
+    console.log('Signal received: ' + error.signal);
   }
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
+  console.log('data : ' + stdout);
+}).on('exit', function(code) {
+  console.log('子进程已退出, 退出码 ' + code);
 });
