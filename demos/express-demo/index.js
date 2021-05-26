@@ -8,7 +8,7 @@ const courses = require('./routes/courses');
 const app = express();
 
 app.set('view engine', 'ejs'); //pug handlebars ejs
-app.set('views', './views');
+app.set('views', './change_views');
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -30,12 +30,8 @@ dbDebugger(`Mail host: ${config.get('mail.host')}`);
 
 // nodemon
 app.get('/', (req, res) => {
-  res.render('index', { title: 'hello', message: 'Hello World' });
-  //   res.send('Hello World');
+  res.render('test', { title: 'hello', message: 'Hello World' });
 });
 
-// PORT
-const port = process.env.PORT || 3000;
-// set PORT=5000
-
+const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening ${port}.....`));

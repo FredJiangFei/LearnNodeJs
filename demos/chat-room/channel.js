@@ -3,7 +3,8 @@ const channel = new events.EventEmitter();
 
 channel.clients = {};
 channel.subscription = {};
-channel.on('join', function(id, client) {
+
+channel.on('join', function (id, client) {
   client.write('Welcome');
 
   this.clients[id] = client;
@@ -16,7 +17,7 @@ channel.on('join', function(id, client) {
   this.on('broadcast', this.subscription[id]);
 });
 
-channel.on('leave', function(id) {
+channel.on('leave', function (id) {
   channel.removeListener('broadcast', this.subscription[id]);
   channel.emit('broadcast', id, `${id} has left. \n`);
 });

@@ -1,0 +1,9 @@
+{
+  "jwtPrivateKey": "unsecureKey",
+  "db": "mongodb://localhost/vidly",
+  "port": "5000",
+  "requiresAuth": true,
+  "mail": {
+    "host": "prod-mail"
+  }
+}

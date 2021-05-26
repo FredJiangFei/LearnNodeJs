@@ -1,11 +1,18 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const config = require('config');
-const app = new express();
-require('./routes/routes')(app);
+const winston = require("winston");
+const express = require("express");
+const config = require("config");
+const app = express();
 
-const dbStr = config.get('db');
-mongoose.connect(dbStr);
+require("./startup/logging")();
+require("./startup/cors")(app);
+require("./startup/routes")(app);
+require("./startup/db")();
+require("./startup/config")();
+require("./startup/validation")();
 
-const port = config.get('port');
-app.listen(port, () => console.log(`Listening ${port}.....`));
+const port = process.env.PORT || config.get("port");
+const server = app.listen(port, () =>
+  winston.info(`Listening on port ${port}...`)
+);
+
+module.exports = server;
